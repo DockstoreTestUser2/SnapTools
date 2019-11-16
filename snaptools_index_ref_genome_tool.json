@@ -1,0 +1,7 @@
+{
+  "input_fasta": {
+        "class": "File",
+        "path": "/Users/waltershands/Documents/UCSC/gitroot/topmed_variant_calling/samtools/examples/toy.fa"
+    },
+  "output_prefix": "toy"
+}
