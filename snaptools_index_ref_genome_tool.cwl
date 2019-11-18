@@ -35,11 +35,11 @@ inputs:
     doc: The genome reference file to be indexed.
 
   output_prefix:
-    type: string
+    type: string?
     inputBinding:
       position: 2
       prefix: --output-prefix
-    #default: $(inputs.input_fasta["nameroot"])
+    #default: "$(inputs.input_fasta[\"nameroot\"])"
     doc: The output prefix for the genome reference index file.
 
   aligner:
@@ -71,6 +71,6 @@ outputs:
       type: array
       items: File
     outputBinding:
-      glob: "$(inputs.output_prefix).*"
+      glob: "$(inputs.input_fasta[\"nameroot\"]).*"
 
 baseCommand: [snaptools, index-genome]
