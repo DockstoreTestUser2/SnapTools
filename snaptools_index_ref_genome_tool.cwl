@@ -67,10 +67,9 @@ inputs:
 
 outputs:
   output:
-    type:
-      type: array
-      items: File
+    type: File
+    secondaryFiles: [".bwt", ".sa", ".ann", ".pac", ".amb"]
     outputBinding:
-      glob: "$(inputs.input_fasta[\"nameroot\"]).*"
+      glob: $(inputs.input_fasta.basename)
 
 baseCommand: [snaptools, index-genome]

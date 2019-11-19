@@ -54,7 +54,7 @@ inputs:
     inputBinding:
       position: 3
       prefix: --output-bam
-    default: "$(input_fastq1[\"nameroot\"])"
+    default: "snaptools_alignment.bam"
     doc: The name to use for the output bam file containing unfiltered alignments.
 
   aligner:
@@ -133,6 +133,6 @@ outputs:
   output:
     type: File
     outputBinding:
-      glob: "*.bam"
+      glob: $(inputs.output_bam)
 
 baseCommand: [snaptools, align-paired-end]
