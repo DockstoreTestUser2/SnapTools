@@ -15,7 +15,7 @@ inputs:
 outputs:
   output:
     type: File
-    outputSource: snaptools_preprocess_reads/output
+    outputSource: snaptools_create_cell_by_bin_matrix/output
 
 steps:
   snaptools_index_ref_genome:
@@ -43,3 +43,9 @@ steps:
 
     out: [output]
 
+  snaptools_create_cell_by_bin_matrix:
+    run: snaptools_create_cell_by_bin_matrix_tool.cwl
+    in:
+      snap_file: snaptools_preprocess_reads/output
+
+    out: [output]
