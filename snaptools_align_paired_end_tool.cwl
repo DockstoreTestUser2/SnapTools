@@ -22,10 +22,6 @@ requirements:
     ramMin: 1024
     outdirMin: 100000
 
-  #InitialWorkDirRequirement:
-  #  listing:
-  #    - $(inputs.input_reference)
-
 inputs:
   input_reference:
     type: File
@@ -84,7 +80,7 @@ inputs:
     type: string?
     inputBinding:
       position: 7
-      prefix: --read_fastq-command
+      prefix: --read-fastq-command
     doc: Command line to execute for each of the input files.
 
   min_cov:
@@ -123,7 +119,7 @@ inputs:
     doc: Whether to overwrite the output file if it already exists.
 
   verbose:
-    type: boolean?
+    type: string?
     inputBinding:
       position: 13
       prefix: --verbose
