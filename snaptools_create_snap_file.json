@@ -1,14 +1,14 @@
 {
   "input_reference_genome": {
         "class": "File",
-        "path": "/Users/waltershands/Documents/UCSC/gitroot/topmed_freeze3_calling/vt/test/ref/20.fa.gz"
+        "path": "gs://snapatac-testing/20.fa.gz"
   },
   "input_fastq1": {
         "class": "File",
-        "path": "/Users/waltershands/Documents//UCSC/smalltestfiles/treeshop/samples/TEST_R1.fastq.gz"
+        "path": "gs://snapatac-testing/TEST_R1.fastq.gz"
     },
   "input_fastq2": {
         "class": "File",
-        "path": "/Users/waltershands/Documents//UCSC/smalltestfiles/treeshop/samples/TEST_R2.fastq.gz"
+        "path": "gs://snapatac-testing/TEST_R2.fastq.gz"
     }
 }
