@@ -10,7 +10,6 @@ inputs:
   input_reference_genome: File
   input_fastq1: File
   input_fastq2: File
-  genome_size: File
 
 outputs:
   output:
@@ -26,6 +25,13 @@ steps:
     out:
       [output]
 
+  snaptools_create_ref_genome_size_file:
+    run: snaptools_create_ref_genome_size_file_tool.cwl
+    in: 
+      ref_genome: input_reference_genome
+
+    out: [output]
+
   snaptools_align_paired_end:
     run: snaptools_align_paired_end_tool.cwl
     in:
@@ -39,7 +45,7 @@ steps:
     run: snaptools_preprocess_reads_tool.cwl
     in:
       input_file: snaptools_align_paired_end/output
-      genome_size: genome_size
+      genome_size: snaptools_create_ref_genome_size_file/output
 
     out: [output]
 

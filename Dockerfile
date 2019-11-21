@@ -4,9 +4,9 @@ FROM ubuntu:18.04
 ARG SNAPTOOLS_COMMIT=96d6f9539b77cd38101196b0adacce742c884974
 
 RUN apt-get update && apt-get install -y \
-    git \
     libbz2-dev \
     liblzma-dev \
+    libncurses5-dev \
     python-pip \
     python \
     python3.5 \
@@ -33,6 +33,15 @@ RUN wget -O SnapTools.zip https://github.com/r3fang/SnapTools/archive/$SNAPTOOLS
 WORKDIR SnapTools
 RUN pip install -e .
 
+WORKDIR /opt/samtools
+RUN wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 -O samtools.tar.bz2 && \
+    tar -xjvf samtools.tar.bz2 && \
+    cd samtools-1.9 && \
+    ./configure --prefix /opt/samtools/samtools-1.9 && \
+    make && \
+    make install
+ENV PATH /opt/samtools/samtools-1.9/bin:$PATH
+
 # Install BWA
 RUN cd /install && \
     wget -O "bwa-0.7.17.tar.bz2" "https://sourceforge.net/projects/bio-bwa/files/bwa-0.7.17.tar.bz2/download" && \
@@ -41,5 +50,7 @@ RUN cd /install && \
     make && \
     mkdir /tools/ && \
     cp bwa /tools/
+
+COPY create_genome_size_file.sh /tools/
 
 ENV PATH /tools/:$PATH
