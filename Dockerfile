@@ -9,7 +9,7 @@ RUN apt-get update && apt-get install -y \
     libncurses5-dev \
     python-pip \
     python \
-    python3.5 \
+    python3 \
     wget \
     curl \
     unzip \

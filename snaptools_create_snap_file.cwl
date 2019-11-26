@@ -1,10 +1,30 @@
-cwlVersion: v1.0
+cwlVersion: v1.1
 class: Workflow
 
-dct:creator:
-  '@id':  https://orcid.org/0000-0001-5173-4627
-  foaf:name: Walter Shands
-  foaf:mbox: jshands@ucsc.edu
+# label: A workflow that creates a SNAP file as outlined at: https://github.com/r3fang/SnapTools
+# doc: A workflow that creates a SNAP file as outlined at: https://github.com/r3fang/SnapTools
+
+s:author:
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0001-5173-4627
+    s:email: jshands@ucsc.edu
+    s:name: Walter Shands
+
+s:codeRepository: https://github.com/wshands/SnapTools/tree/feature/docker_cwl
+s:dateCreated: "2019-11-15"
+s:license: https://spdx.org/licenses/Apache-2.0
+
+s:keywords: edam:topic_0091 , edam:topic_0622
+s:programmingLanguage: Python
+
+$namespaces:
+  s: https://schema.org/
+  edam: http://edamontology.org/
+
+$schemas:
+  - https://schema.org/docs/schema_org_rdfa.html
+  - http://edamontology.org/EDAM_1.18.owl
+
 
 inputs:
   input_reference_genome: File
@@ -27,7 +47,7 @@ steps:
 
   snaptools_create_ref_genome_size_file:
     run: snaptools_create_ref_genome_size_file_tool.cwl
-    in: 
+    in:
       ref_genome: input_reference_genome
 
     out: [output]
@@ -55,3 +75,5 @@ steps:
       snap_file: snaptools_preprocess_reads/output
 
     out: [output]
+
+

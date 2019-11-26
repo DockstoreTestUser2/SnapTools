@@ -3,11 +3,31 @@
 class: CommandLineTool
 id: snaptools_create_ref_genome_sizes_file
 label: snaptools create reference genome sizes file
-cwlVersion: v1.0
+cwlVersion: v1.1
+
+s:author:
+  - class: s:Person
+    s:identifier: https://orcid.org/0000-0001-5173-4627
+    s:email: jshands@ucsc.edu
+    s:name: Walter Shands
+
+s:codeRepository: https://github.com/wshands/SnapTools/tree/feature/docker_cwl
+s:dateCreated: "2019-11-15"
+s:license: https://spdx.org/licenses/Apache-2.0
+
+s:keywords: edam:topic_0091 , edam:topic_0622
+s:programmingLanguage: Python
 
 $namespaces:
+  s: https://schema.org/
+  edam: http://edamontology.org/
   dct: http://purl.org/dc/terms/
   foaf: http://xmlns.com/foaf/0.1/
+
+$schemas:
+  - https://schema.org/docs/schema_org_rdfa.html
+  - http://edamontology.org/EDAM_1.18.owl
+
 
 dct:creator:
   '@id':  https://orcid.org/0000-0001-5173-4627
