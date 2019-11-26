@@ -28,6 +28,7 @@ $schemas:
 
 inputs:
   input_reference_genome: File
+  reference_genome_index: File?
   input_fastq1: File
   input_fastq2: File
 
@@ -41,6 +42,7 @@ steps:
     run: snaptools_index_ref_genome_tool.cwl
     in:
       input_fasta: input_reference_genome
+      reference_genome_index: reference_genome_index
 
     out:
       [output]

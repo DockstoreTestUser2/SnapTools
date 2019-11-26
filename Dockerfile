@@ -52,5 +52,6 @@ RUN cd /install && \
     cp bwa /tools/
 
 COPY create_genome_size_file.sh /tools/
+COPY create_reference_genome_index.sh /tools/
 
 ENV PATH /tools/:$PATH
