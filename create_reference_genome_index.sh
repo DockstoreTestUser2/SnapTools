@@ -11,7 +11,7 @@ set -u
 set -o xtrace
 #to turn off echo do 'set +o xtrace'
 
-# If there is no reference index tar gz supplied
+# If there is a reference index tar gz supplied
 if [[ "$*" == *--reference-genome-index* ]]
 then
   echo "Untarring reference genome index tar gz"
