@@ -33,6 +33,8 @@ RUN wget -O SnapTools.zip https://github.com/r3fang/SnapTools/archive/$SNAPTOOLS
 WORKDIR SnapTools
 RUN pip install -e .
 
+RUN pip install html5lib
+
 WORKDIR /opt/samtools
 RUN wget https://github.com/samtools/samtools/releases/download/1.9/samtools-1.9.tar.bz2 -O samtools.tar.bz2 && \
     tar -xjvf samtools.tar.bz2 && \
