@@ -49,7 +49,7 @@ inputs:
       position: 1
       prefix: --input-reference
     secondaryFiles: [".bwt", ".sa", ".ann", ".pac", ".amb"]
-    doc: The genome reference file to be indexed.
+    doc: The genome reference file to use.
 
   input_fastq1:
     type: File
@@ -129,6 +129,7 @@ inputs:
     inputBinding:
       position: 11
       prefix: --tmp-folder
+    default: "/tmp"
     doc: Directory to store temporary files.
 
   overwrite:

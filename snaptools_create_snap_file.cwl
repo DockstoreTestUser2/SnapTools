@@ -31,6 +31,8 @@ inputs:
   reference_genome_index: File?
   input_fastq1: File
   input_fastq2: File
+  input_barcode_fastq: File
+  tmp_folder: string?
 
 outputs:
   output:
@@ -54,12 +56,22 @@ steps:
 
     out: [output]
 
+  snaptools_add_barcodes_to_reads_tool:
+    run: snaptools_add_barcodes_to_reads_tool.cwl
+    in:
+      input_fastq1: input_fastq1
+      input_fastq2: input_fastq2
+      input_barcode_fastq: input_barcode_fastq
+     
+    out: [barcode_added_fastq1, barcode_added_fastq2]
+
   snaptools_align_paired_end:
     run: snaptools_align_paired_end_tool.cwl
     in:
       input_reference: snaptools_index_ref_genome/output
-      input_fastq1: input_fastq1
-      input_fastq2: input_fastq2
+      input_fastq1: snaptools_add_barcodes_to_reads_tool/barcode_added_fastq1
+      input_fastq2: snaptools_add_barcodes_to_reads_tool/barcode_added_fastq2
+      tmp_folder: tmp_folder
 
     out: [output]
 
