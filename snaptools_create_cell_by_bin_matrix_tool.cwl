@@ -56,10 +56,11 @@ inputs:
     doc: The SNAP file in which to place the cell by bin matrix.
 
   bin_size_list:
-    type: string[]?
+    type: int[]?
     inputBinding:
       prefix: --bin-size-list
       position: 2
+    default: [5000, 10000]
     doc: A list of bin size(s) to create in the cell-by-bin count matrix.
 
   tmp_folder:
@@ -67,6 +68,7 @@ inputs:
     inputBinding:
       position: 11
       prefix: --tmp-folder
+    default: "/tmp"
     doc: Directory to store temporary files.
 
   verbose:
@@ -74,10 +76,11 @@ inputs:
     inputBinding:
       position: 13
       prefix: --verbose
+    default: "TRUE"
     doc: A boolen tag; if true output the progress.
 
 outputs:
-  output:
+  snap_file_w_cell_by_bin:
     type: File
     outputBinding:
       glob: $(inputs.snap_file.basename)

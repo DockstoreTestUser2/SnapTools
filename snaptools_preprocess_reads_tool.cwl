@@ -51,7 +51,7 @@ inputs:
     doc: The genome BAM or BED file to be processed.
 
   output_snap:
-    type: string
+    type: string?
     inputBinding:
       position: 2
       prefix: --output-snap
@@ -59,7 +59,7 @@ inputs:
     doc: The name to use for the output SNAP file.
 
   genome_name:
-    type: string
+    type: string?
     inputBinding:
       position: 3
       prefix: --genome-name
@@ -83,35 +83,35 @@ inputs:
     doc: A text file containing pre-selected cell barcodes.
 
   min_mapq:
-    type: string?
+    type: int?
     inputBinding:
       position: 7
       prefix: --min-mapq
-    default: "30"
+    default: 30
     doc: Minimum mappability score.
 
   min_flen:
-    type: string?
+    type: int?
     inputBinding:
       position: 8
       prefix: --min-flen
-    default: "0"
+    default: 0
     doc: Minimum fragment length.
 
   max_flen:
-    type: string?
+    type: int?
     inputBinding:
       position: 9
       prefix: --max-flen
-    default: "1000"
+    default: 1000
     doc: Maximum fragment length.
 
   min_cov:
-    type: string?
+    type: int?
     inputBinding:
       position: 10
       prefix: --min-cov
-    default: "100"
+    default: 100
     doc: Minimum number of fragments per barcode.
 
   keep_chrm:
@@ -150,6 +150,7 @@ inputs:
     inputBinding:
       position: 15
       prefix: --tmp-folder
+    default: "/tmp"
     doc: Directory to store temporary files.
 
   overwrite:
@@ -172,12 +173,19 @@ inputs:
     inputBinding:
       position: 18
       prefix: --verbose
+    default: "TRUE"
     doc: A boolen tag; if true output the progress.
 
 outputs:
-  output:
+  snap_file:
     type: File
     outputBinding:
       glob: $(inputs.output_snap)
+
+  snap_qc_file:
+    type: File
+    outputBinding:
+      glob: "$(inputs.output_snap).qc"
+
 
 baseCommand: [snaptools, snap-pre]

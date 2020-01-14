@@ -29,15 +29,19 @@ $schemas:
 inputs:
   input_reference_genome: File
   reference_genome_index: File?
+  genome_name: string?
   input_fastq1: File
   input_fastq2: File
-  input_barcode_fastq: File
+  input_barcode_fastq: File?
   tmp_folder: string?
 
 outputs:
-  output:
+  snap_file:
     type: File
-    outputSource: snaptools_create_cell_by_bin_matrix/output
+    outputSource: snaptools_create_cell_by_bin_matrix/snap_file_w_cell_by_bin
+  snap_qc_file:
+    type: File
+    outputSource: snaptools_preprocess_reads/snap_qc_file
 
 steps:
   snaptools_index_ref_genome:
@@ -80,14 +84,15 @@ steps:
     in:
       input_file: snaptools_align_paired_end/output
       genome_size: snaptools_create_ref_genome_size_file/output
-
-    out: [output]
+      genome_name: genome_name
+      
+    out: [snap_file, snap_qc_file]
 
   snaptools_create_cell_by_bin_matrix:
     run: snaptools_create_cell_by_bin_matrix_tool.cwl
     in:
-      snap_file: snaptools_preprocess_reads/output
+      snap_file: snaptools_preprocess_reads/snap_file
 
-    out: [output]
+    out: [snap_file_w_cell_by_bin]
 
 

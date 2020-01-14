@@ -93,7 +93,15 @@ while(my $r1_1 = <R1>){
   my $cell_barcode = $barcode1 . $barcode2 . $barcode3;
   my $rc_cell_barcode = revComp($cell_barcode);
 
-  print R1_OUT "@", $prefix, "_", $rc_cell_barcode, ":$umi:", $r1_1, $r1_2, $r1_3, $r1_4;
-  print R3_OUT "@", $prefix, "_", $rc_cell_barcode, ":$umi:", $r3_1, $r3_2, $r3_3, $r3_4;
+  # Don't add the prefix to the read id string because SnapTools
+  # snap-pre will fail to construct a correct snap file.
+  # This probably should be debugged in snap_pre.py 
+  #print R1_OUT "@", $prefix, "_", $rc_cell_barcode, ":$umi:", $r1_1, $r1_2, $r1_3, $r1_4;
+  #print R3_OUT "@", $prefix, "_", $rc_cell_barcode, ":$umi:", $r3_1, $r3_2, $r3_3, $r3_4;
+
+  print R1_OUT "@", $rc_cell_barcode, ":$umi:", $r1_1, $r1_2, $r1_3, $r1_4;
+  print R3_OUT "@", $rc_cell_barcode, ":$umi:", $r3_1, $r3_2, $r3_3, $r3_4;
+
 
 }
+

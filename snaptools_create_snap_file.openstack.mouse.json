@@ -1,0 +1,15 @@
+{
+  "input_reference_genome": {
+        "class": "File",
+        "path": "/mnt/huBMAP_snapATAC_testing/snaptools_test/mm10.fa"
+  },
+  "genome_name": "mm10",
+  "input_fastq1": {
+        "class": "File",
+        "path": "/mnt/huBMAP_snapATAC_testing/snaptools_test/demo.R1.fastq.gz"
+  },
+  "input_fastq2": {
+        "class": "File",
+        "path": "/mnt/huBMAP_snapATAC_testing/snaptools_test/demo.R2.fastq.gz"
+  }
+}

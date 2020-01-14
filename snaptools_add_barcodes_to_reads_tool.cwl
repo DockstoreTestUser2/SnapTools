@@ -69,7 +69,7 @@ inputs:
     inputBinding:
       position: 4
       prefix: --output-fastq-prefix
-    default: "barcode_added_"
+    default: "barcode_added"
     doc: The prefix to use for the output fastq files with barcodes added to the read sequence identifier.
 
 outputs:
