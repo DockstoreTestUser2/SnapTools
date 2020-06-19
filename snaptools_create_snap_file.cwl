@@ -25,6 +25,10 @@ $schemas:
   - https://schema.org/docs/schema_org_rdfa.html
   - http://edamontology.org/EDAM_1.18.owl
 
+requirements:
+  ResourceRequirement:
+    coresMin: 1
+    ramMin: 1024
 
 inputs:
   input_reference_genome: File
